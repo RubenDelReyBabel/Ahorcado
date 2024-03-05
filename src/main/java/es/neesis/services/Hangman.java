@@ -18,17 +18,17 @@ public class Hangman {
     }
 
     public boolean guess(String guess){
-        tries--;
+        boolean correct = false;
         if (guess.length() == 1){
-            return charGuess(guess);
+            correct = charGuess(guess);
         }
         else if (guess.length() > 1){
-            return wordGuess(guess);
+            correct = wordGuess(guess);
         }
-        else {
-            return false;
-            //throw new Exception();
+        if (!correct){
+            this.tries--;
         }
+        return correct;
     }
 
     private boolean charGuess(String guess){
